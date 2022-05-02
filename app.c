@@ -14,7 +14,7 @@ void binary(int checkError);
 void octal(int checkError);
 void decimal(int checkError);
 void hex(int checkError);
-void baseNumberConvert();
+void baseNumberConvert(int checkError);
 int mainApp(int checkError);
 void loremGenerator();
 void uuidGenerator();
@@ -413,11 +413,11 @@ void binary(int checkError){
         }
     }
     else if (choice == 0){
-        system("clear");
-        baseNumberConvert();
+        system("cls");
+        baseNumberConvert(0);
     }
     else{
-        system("clear");
+        system("cls");
         binary(1);
     }
 }
@@ -459,11 +459,11 @@ void octal(int checkError){
         }
     }
     else if(choice == 0){
-        system("clear");
-        baseNumberConvert();
+        system("cls");
+        baseNumberConvert(0);
     }
     else{
-        system("clear");
+        system("cls");
         octal(1);
     }
 }
@@ -505,11 +505,11 @@ void decimal(int checkError){
         }
     }
     else if (choice == 0){
-        system("clear");
-        baseNumberConvert();
+        system("cls");
+        baseNumberConvert(0);
     }
     else{
-        system("clear");
+        system("cls");
         decimal(1);
     }
 }
@@ -551,11 +551,11 @@ void hex(int checkError){
         }
     }
     else if (choice == 0){
-        system("clear");
-        baseNumberConvert();
+        system("cls");
+        baseNumberConvert(0);
     }
     else{
-        system("clear");
+        system("cls");
         hex(1);
     }
 }
@@ -571,7 +571,7 @@ void chooseService()
     }
     else if (selectedOption == 2)
     {
-        baseNumberConvert();
+        baseNumberConvert(0);
     }
     else if (selectedOption == 3)
     {
@@ -624,7 +624,7 @@ int mainApp(int checkError)
     }
     else
     {
-        system("clear");
+        system("cls");
         return option;
     }
     return 0;
@@ -723,29 +723,29 @@ void baseNumberConvert(int checkError){
     if(option >= 1 && option <= 4){
         switch(option){
             case 1:
-            system("clear");
+            system("cls");
             binary(0);
             break;
             case 2:
-            system("clear");
+            system("cls");
             octal(0);
             break;
             case 3:
-            system("clear");
+            system("cls");
             decimal(0);
             break;
             case 4:
-            system("clear");
+            system("cls");
             hex(0);
             break;
         }
     }
     else if (option == 0){
-        system("clear");
+        system("cls");
         chooseService();
     }
     else{
-        system("clear");
+        system("cls");
         baseNumberConvert(1);
     }
 }
