@@ -2,14 +2,18 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include <conio.h>
+// #include <conio.h>
 #include <unistd.h>
-#include <windows.h>
+// #include <windows.h>
 #include <math.h>
 #include <string.h>
 
 #define RED(string) "\x1b[31m" string "\x1b[0m"
 
+void binary(int checkError);
+void octal(int checkError);
+void decimal(int checkError);
+void hex(int checkError);
 void baseNumberConvert();
 int mainApp(int checkError);
 void loremGenerator();
@@ -371,9 +375,9 @@ void binary_to_octal(long int binary){
     printf("octa : %d",octal);
 }
 //=================================================================================================
-void binary(){
+void binary(int checkError){
     int choice;
-    long int binary;
+    long int binary_convert;
     printf("========================================================================================================================\n\n");
     printf("Selected option : 1 (Binary Convert)\n");
     printf("< Enter [0] back to menu.\n\n");
@@ -384,105 +388,27 @@ void binary(){
     printf("2.Decimal\n");
     printf("3.Hexadecimal\n");
     printf("\n");
-    
+    if (checkError == 1){
+        printf("Please choose the correct option!\n");
+    }
     printf("--> ");
     scanf("%d",&choice);
     if (choice >= 1 && choice <= 3){
         switch(choice){
             case 1:
             printf("Type your number : ");
-            scanf("%ld",&binary);
-            binary_to_octal(binary);
+            scanf("%ld",&binary_convert);
+            binary_to_octal(binary_convert);
             break;
             case 2:
             printf("Type your number : ");
-            scanf("%ld",&binary);
-            binary_to_decimal(binary);
+            scanf("%ld",&binary_convert);
+            binary_to_decimal(binary_convert);
             break;
             case 3:
             printf("Type your number : ");
-            scanf("%ld",&binary);
-            binary_to_hex(binary);
-            break;
-        }
-    }
-    else if (choice == 0){
-        system("clear");
-        baseNumberConvert();
-    }
-}
-void octal(){
-    int choice;
-    int octal;
-    printf("========================================================================================================================\n\n");
-    printf("Selected option : 1 (Octal Convert)\n");
-    printf("< Enter [0] back to menu.\n\n");
-    printf("========================================================================================================================\n\n");
-    printf("please select a convert to topic below.\n");
-    printf("\n");
-    printf("1.Binary\n");
-    printf("2.Decimal\n");
-    printf("3.Hexadecimal\n");
-    printf("\n");
-    
-    printf("--> ");
-    scanf("%d",&choice);
-    if (choice >= 1 && choice <= 3){
-        switch(choice){
-            case 1:
-            printf("Type your number : ");
-            scanf("%d",&octal);
-            octal_to_binary(octal);
-            break;
-            case 2:
-            printf("Type your number : ");
-            scanf("%d",&octal);
-            octal_to_decimal(octal);
-            break;
-            case 3:
-            printf("Type your number : ");
-            scanf("%d",&octal);
-            octal_to_hex(octal);
-            break;
-        }
-    }
-    else if(choice == 0){
-        system("clear");
-        baseNumberConvert();
-    }
-}
-void decimal(){
-    int choice;
-    int decimal;
-    printf("========================================================================================================================\n\n");
-    printf("Selected option : 1 (Decimal Convert)\n");
-    printf("< Enter [0] back to menu.\n\n");
-    printf("========================================================================================================================\n\n");
-    printf("please select a convert to topic below.\n");
-    printf("\n");
-    printf("1.Binary\n");
-    printf("2.Octal\n");
-    printf("3.Hexadecimal\n");
-    printf("\n");
-    
-    printf("--> ");
-    scanf("%d",&choice);
-    if (choice >= 1 && choice <= 3){
-        switch(choice){
-            case 1:
-            printf("Type your number : ");
-            scanf("%d",&decimal);
-            decimal_to_binary(decimal);
-            break;
-            case 2:
-            printf("Type your number : ");
-            scanf("%d",&decimal);
-            decimal_to_octal(decimal);
-            break;
-            case 3:
-            printf("Type your number : ");
-            scanf("%d",&decimal);
-            decimal_to_hex(decimal);
+            scanf("%ld",&binary_convert);
+            binary_to_hex(binary_convert);
             break;
         }
     }
@@ -492,13 +418,106 @@ void decimal(){
     }
     else{
         system("clear");
+        binary(1);
     }
 }
-void hex(){
+void octal(int checkError){
     int choice;
-    char hex[100];
+    int octal_convert;
     printf("========================================================================================================================\n\n");
-    printf("Selected option : 1 (Hexadecimal Convert)\n");
+    printf("Selected option : 2 (Octal Convert)\n");
+    printf("< Enter [0] back to menu.\n\n");
+    printf("========================================================================================================================\n\n");
+    printf("please select a convert to topic below.\n");
+    printf("\n");
+    printf("1.Binary\n");
+    printf("2.Decimal\n");
+    printf("3.Hexadecimal\n");
+    printf("\n");
+    if (checkError == 1){
+        printf("Please choose the correct option!\n");
+    }
+    printf("--> ");
+    scanf("%d",&choice);
+    if (choice >= 1 && choice <= 3){
+        switch(choice){
+            case 1:
+            printf("Type your number : ");
+            scanf("%d",&octal_convert);
+            octal_to_binary(octal_convert);
+            break;
+            case 2:
+            printf("Type your number : ");
+            scanf("%d",&octal_convert);
+            octal_to_decimal(octal_convert);
+            break;
+            case 3:
+            printf("Type your number : ");
+            scanf("%d",&octal_convert);
+            octal_to_hex(octal_convert);
+            break;
+        }
+    }
+    else if(choice == 0){
+        system("clear");
+        baseNumberConvert();
+    }
+    else{
+        system("clear");
+        octal(1);
+    }
+}
+void decimal(int checkError){
+    int choice;
+    int decimal_convert;
+    printf("========================================================================================================================\n\n");
+    printf("Selected option : 3 (Decimal Convert)\n");
+    printf("< Enter [0] back to menu.\n\n");
+    printf("========================================================================================================================\n\n");
+    printf("please select a convert to topic below.\n");
+    printf("\n");
+    printf("1.Binary\n");
+    printf("2.Octal\n");
+    printf("3.Hexadecimal\n");
+    printf("\n");
+    if (checkError == 1){
+        printf("Please choose the correct option!\n");
+    }
+    printf("--> ");
+    scanf("%d",&choice);
+    if (choice >= 1 && choice <= 3){
+        switch(choice){
+            case 1:
+            printf("Type your number : ");
+            scanf("%d",&decimal_convert);
+            decimal_to_binary(decimal_convert);
+            break;
+            case 2:
+            printf("Type your number : ");
+            scanf("%d",&decimal_convert);
+            decimal_to_octal(decimal_convert);
+            break;
+            case 3:
+            printf("Type your number : ");
+            scanf("%d",&decimal_convert);
+            decimal_to_hex(decimal_convert);
+            break;
+        }
+    }
+    else if (choice == 0){
+        system("clear");
+        baseNumberConvert();
+    }
+    else{
+        system("clear");
+        decimal(1);
+    }
+}
+void hex(int checkError){
+    int choice;
+    char hex_convert[100];
+    printf("========================================================================================================================\n\n");
+    printf("Selected option : 4 (Hexadecimal Convert)\n");
     printf("< Enter [0] back to menu.\n\n");
     printf("========================================================================================================================\n\n");
     printf("please select a convert to topic below.\n");
@@ -507,30 +526,37 @@ void hex(){
     printf("2.Octacl\n");
     printf("3.Decimal\n");
     printf("\n");
+    if (checkError == 1){
+        printf("Please choose the correct option!\n");
+    }
     printf("--> ");
     scanf("%d",&choice);
     if (choice >= 1 && choice <= 3){
         switch(choice){
             case 1:
             printf("Type your number : ");
-            scanf("%s",hex);
-            hex_to_binary(hex);
+            scanf("%s",hex_convert);
+            hex_to_binary(hex_convert);
             break;
             case 2:
             printf("Type your number : ");
-            scanf("%s",hex);
-            hex_to_octal(hex);
+            scanf("%s",hex_convert);
+            hex_to_octal(hex_convert);
             break;
             case 3:
             printf("Type your number : ");
-            scanf("%s",hex);
-            hex_to_decimal(hex);
+            scanf("%s",hex_convert);
+            hex_to_decimal(hex_convert);
             break;
         }
     }
     else if (choice == 0){
         system("clear");
         baseNumberConvert();
+    }
+    else{
+        system("clear");
+        hex(1);
     }
 }
 
@@ -601,6 +627,7 @@ int mainApp(int checkError)
         system("clear");
         return option;
     }
+    return 0;
 }
 
 void loremGenerator()
@@ -650,10 +677,10 @@ void loremGenerator()
 
         printf("\n-- Total : %d paragraph with %d words -- \n", paragraphAmount, fraction);
         printf("========================================================================================================================\n\n");
-        printf("< Enter [a-z0-9] back to menu.\n\n");
-        char backtoMenu[50] = {""};
-        scanf("%s", backtoMenu);
-        if(backtoMenu){
+        printf("< Enter [0] back to menu.\n\n");
+        int backtoMenu;
+        scanf("%d", &backtoMenu);
+        if(backtoMenu == 0){
             chooseService();
         }
 
@@ -674,7 +701,7 @@ void loremGenerator()
     };
 }
 
-void baseNumberConvert(){
+void baseNumberConvert(int checkError){
     int option;
     printf("========================================================================================================================\n\n");
     printf("Selected option : 1 (Base Number Converter)\n");
@@ -687,6 +714,9 @@ void baseNumberConvert(){
     printf("3.Decimal Convert\n");
     printf("4.Hex Convert\n");
     printf("\n");
+    if(checkError == 1){
+        printf("Please choose the correct option!\n");
+    }
     printf("--> ");
     scanf("%d",&option);
 
@@ -694,24 +724,29 @@ void baseNumberConvert(){
         switch(option){
             case 1:
             system("clear");
-            binary();
+            binary(0);
             break;
             case 2:
             system("clear");
-            octal();
+            octal(0);
             break;
             case 3:
             system("clear");
-            decimal();
+            decimal(0);
             break;
             case 4:
             system("clear");
-            hex();
+            hex(0);
             break;
         }
     }
     else if (option == 0){
+        system("clear");
         chooseService();
+    }
+    else{
+        system("clear");
+        baseNumberConvert(1);
     }
 }
 
