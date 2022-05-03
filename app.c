@@ -560,6 +560,73 @@ void hex(int checkError){
     }
 }
 
+// =================================================================================================
+//                                     Base64 Encoder
+// =================================================================================================
+
+const char base64_table[64] = {
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+    'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
+    'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+    'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/',
+};
+
+char *bin(int n) {
+  long long bin = 0;
+  int rem, i = 1;
+
+  while (n!=0) {
+    rem = n % 2;
+    n /= 2;
+    bin += rem * i;
+    i *= 10;
+  }
+  char str[256];
+  sprintf(str, "%08lld", bin);
+  return str;
+}
+
+void base64encode(){
+    printf("========================================================================================================================\n\n");
+    printf("Selected option : 3 (Base64 Encoder)\n\n");
+    printf("========================================================================================================================\n\n");
+
+    printf("Please input the text you want to convert.\n");
+    printf("-> ");
+    char in_txt[1001], _24bit_str[25];
+    scanf(" %[^\n]", in_txt);
+    printf("\n========================================================================================================================\n\nResult: ");
+    for(int i = 0; i < strlen(in_txt); i++){
+        strcat(_24bit_str, bin(in_txt[i]));
+        if(i % 3 == 2 || i == strlen(in_txt) - 1){
+            char _6bit_str[7];
+            char *eptr;
+            int check = 0;
+            for(int j = 0; j < 4; j++){
+                if(check){
+                    printf("=");
+                    continue;
+                }
+                strncpy(_6bit_str, _24bit_str + j * 6, 6);
+                if(strlen(_6bit_str) < 5){
+                    sprintf(_6bit_str, "%s%0*d", _6bit_str , 6 - strlen(_6bit_str), 0);
+                    check = 1;
+                }
+                printf("%c", base64_table[strtoll(_6bit_str, &eptr, 2)]);
+            }
+            strcpy(_24bit_str, "");
+        }
+    }
+    printf("\n\n");
+    printf("========================================================================================================================\n\n");
+    printf("< Enter [0] back to menu.\n\n");
+    int backtoMenu;
+    scanf("%d", &backtoMenu);
+    if(backtoMenu == 0){
+        chooseService();
+    }
+}
+
 // Choose services interface
 void chooseService()
 {
@@ -575,7 +642,7 @@ void chooseService()
     }
     else if (selectedOption == 3)
     {
-        printf("Selected option -> 3");
+        base64encode();
     }
 }
 
