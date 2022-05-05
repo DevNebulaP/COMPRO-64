@@ -571,6 +571,17 @@ const char base64_table[64] = {
     'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/',
 };
 
+int table_comp(char txt){
+    if(txt == '='){
+        return 0;
+    }
+    for(int i = 0; i < 64; i++){
+        if(txt == base64_table[i]){
+            return i;
+        }
+    }
+}
+
 char *bin(int n) {
   long long bin = 0;
   int rem, i = 1;
@@ -583,6 +594,21 @@ char *bin(int n) {
   }
   char str[256];
   sprintf(str, "%08lld", bin);
+  return str;
+}
+
+char *_6bit_bin(int n) {
+  long long bin = 0;
+  int rem, i = 1;
+
+  while (n!=0) {
+    rem = n % 2;
+    n /= 2;
+    bin += rem * i;
+    i *= 10;
+  }
+  char str[256];
+  sprintf(str, "%06lld", bin);
   return str;
 }
 
@@ -627,6 +653,41 @@ void base64encode(){
     }
 }
 
+void base64decode(){
+    printf("========================================================================================================================\n\n");
+    printf("Selected option : 4 (Base64 Decoder)\n\n");
+    printf("========================================================================================================================\n\n");
+
+    printf("Please input the base64 encoded text you want to decode.\n");
+    printf("-> ");
+    char in_txt[1001], _24bit_str[25];
+    scanf(" %[^\n]", in_txt);
+    printf("\n========================================================================================================================\n\nResult: ");
+    for(int i = 0; i < strlen(in_txt); i++){
+        strcat(_24bit_str, _6bit_bin(table_comp(in_txt[i])));
+        if(i % 4 == 3 || i == strlen(in_txt) - 1){
+            char _8bit_str[9];
+            char *eptr;
+            for(int j = 0; j < 3; j++){
+                strncpy(_8bit_str, _24bit_str + j * 8, 8);
+                if(strcmp(_8bit_str, "00000000") == 0){
+                    break;
+                }
+                printf("%c", strtoll(_8bit_str, &eptr, 2));
+            }
+            strcpy(_24bit_str, "");
+        }
+    }
+    printf("\n\n");
+    printf("========================================================================================================================\n\n");
+    printf("< Enter [0] back to menu.\n\n");
+    int backtoMenu;
+    scanf("%d", &backtoMenu);
+    if(backtoMenu == 0){
+        chooseService();
+    }
+}
+
 // Choose services interface
 void chooseService()
 {
@@ -643,6 +704,10 @@ void chooseService()
     else if (selectedOption == 3)
     {
         base64encode();
+    }
+    else if (selectedOption == 4)
+    {
+        base64decode();
     }
 }
 
@@ -670,6 +735,7 @@ int mainApp(int checkError)
     printf("| [1] | Lorem Ipsum generator  |\n");
     printf("| [2] | Base Number Converter  |\n");
     printf("| [3] | Base64 encoder         |\n");
+    printf("| [4] | Base64 decoder         |\n");
     printf("| [0] | Exit Program           |\n");
     printf("+-----+------------------------+\n");
     if (checkError == 1)
@@ -682,7 +748,7 @@ int mainApp(int checkError)
     int option;
     scanf("%d", &option);
 
-    if (option > 3 || option < 0)
+    if (option > 4 || option < 0)
     {
         mainApp(1);
     }
