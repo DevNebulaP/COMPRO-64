@@ -726,8 +726,8 @@ int mainApp(int checkError)
     printf("👉      This is universal functional program.\n");
     printf("👉      Light weight for using with only 12kb file.\n");
     printf("👉      Features : Lorem Ipsum generator\n");
-    printf("👉               : Password encryption\n");
-    printf("👉               : UUID generator\n\n");
+    printf("👉               : Base Number Converter\n");
+    printf("👉               : Base64 encoder\n\n");
     printf("========================================================================================================================\n\n");
     printf("   Please choose a service\n");
     printf("+-----+-------------------------+\n");
