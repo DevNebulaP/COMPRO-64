@@ -46,7 +46,7 @@ void hex_to_decimal(char* hex){
             base *= 16;
         }
     }
-    printf("decimal : %lld\n", decimal);
+    printf("Decimal : %lld\n", decimal);
 }
 void hex_to_octal(char* hex){
     long long octal, bin, place;
@@ -161,11 +161,11 @@ void hex_to_octal(char* hex){
 
         place *= 10;
     }
-    printf("octal : %lld\n", octal);
+    printf("Octal : %lld\n", octal);
 }
 void hex_to_binary(char* hex){
 	long int i = 0;
-    printf("binary : ");
+    printf("Binary : ");
 	while (hex[i]) {
 
 		switch (hex[i]) {
@@ -245,7 +245,7 @@ void decimal_to_hex(int decimal) {
 		hex[i++]= temp;
 		quotient = quotient / 16;
 	}
-	printf("hex : ");
+	printf("Hex : ");
 	for (j = i -1 ;j> 0;j--)
 	      printf("%c",hex[j]);
     printf("\n");
@@ -260,7 +260,7 @@ void decimal_to_octal(int decimal)
         octalNumber[i++] = quotient % 8;
         quotient = quotient / 8;
     }
-    printf("octal : ");
+    printf("Octal : ");
     for (j = i - 1; j > 0; j--)
         printf("%d", octalNumber[j]);
 }
@@ -270,7 +270,7 @@ void decimal_to_binary(int decimal){
         a[i]=decimal%2;    
         decimal=decimal/2;    
     }
-    printf("binary :");    
+    printf("Binary :");    
     for(i=i-1;i>=0;i--){    
         printf("%d",a[i]);
     }
@@ -299,7 +299,7 @@ void octal_to_hex(int octal){
             Hex[i++]=rem+55;//55 Ascii=7
         decimal/=16;
     }
-    printf ("hex :");
+    printf ("Hex :");
     for(int j=i-1;j>=0;j--)
         printf("%c",Hex[j]);
 }
@@ -311,7 +311,7 @@ void octal_to_decimal(int octal){
         ++i;
         octal/=10;
     }
-    printf("decimal : %d",decimal);
+    printf("Decimal : %d",decimal);
 }
 void octal_to_binary(int octal){
     int decimal = 0, i = 0;
@@ -329,7 +329,7 @@ void octal_to_binary(int octal){
         decimal /= 2;
         i *= 10;
     }
-    printf("binary : %lld",binary);
+    printf("Binary : %lld",binary);
 }
 // =================================================================================================
 //                                     binary converter functions
@@ -343,7 +343,7 @@ void binary_to_hex(long int binary){
         i = i * 2;
         binary = binary / 10;
     }
-    printf("hex : %lX", hex);
+    printf("Hex : %lX", hex);
 }
 void binary_to_decimal(long int binary){
     int decimal = 0;
@@ -353,7 +353,7 @@ void binary_to_decimal(long int binary){
         ++i;
         binary/=10;
     }
-    printf("decimal : %d", decimal);
+    printf("Decimal : %d", decimal);
 }
 void binary_to_octal(long int binary){
     int octal = 0;
@@ -372,7 +372,7 @@ void binary_to_octal(long int binary){
         decimal /= 8;
         i *= 10;
     }
-    printf("octa : %d",octal);
+    printf("Octa : %d",octal);
 }
 //=================================================================================================
 void binary(int checkError){
@@ -881,6 +881,13 @@ void baseNumberConvert(int checkError){
         system("cls");
         baseNumberConvert(1);
     }
+    printf("\n================================================================");
+    printf("\n< Enter [0] back to menu.\n\n");
+        int backtoMenu;
+        scanf("%d", &backtoMenu);
+        if(backtoMenu == 0){
+            chooseService();
+        }
 }
 
 int main()
