@@ -343,7 +343,7 @@ void binary_to_hex(long int binary){
         i = i * 2;
         binary = binary / 10;
     }
-    printf("hex : %ld",hex);
+    printf("hex : %lX", hex);
 }
 void binary_to_decimal(long int binary){
     int decimal = 0;
