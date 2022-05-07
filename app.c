@@ -582,7 +582,7 @@ int table_comp(char txt){
     }
 }
 
-char *bin(int n) {
+char *bin(int n, char *str) {
   long long bin = 0;
   int rem, i = 1;
 
@@ -592,12 +592,11 @@ char *bin(int n) {
     bin += rem * i;
     i *= 10;
   }
-  char str[256];
   sprintf(str, "%08lld", bin);
   return str;
 }
 
-char *_6bit_bin(int n) {
+char *_6bit_bin(int n, char *str) {
   long long bin = 0;
   int rem, i = 1;
 
@@ -607,7 +606,6 @@ char *_6bit_bin(int n) {
     bin += rem * i;
     i *= 10;
   }
-  char str[256];
   sprintf(str, "%06lld", bin);
   return str;
 }
@@ -619,13 +617,14 @@ void base64encode(){
 
     printf("Please input the text you want to convert.\n");
     printf("-> ");
-    char in_txt[1001], _24bit_str[25];
+    char in_txt[1001], _24bit_str[25] = "";
     scanf(" %[^\n]", in_txt);
     printf("\n========================================================================================================================\n\nResult: ");
     for(int i = 0; i < strlen(in_txt); i++){
-        strcat(_24bit_str, bin(in_txt[i]));
+        char  _8bit_str[9];
+        strcat(_24bit_str, bin(in_txt[i], &_8bit_str));
         if(i % 3 == 2 || i == strlen(in_txt) - 1){
-            char _6bit_str[7];
+            char _6bit_str[7] = "";
             char *eptr;
             int check = 0;
             for(int j = 0; j < 4; j++){
@@ -660,13 +659,14 @@ void base64decode(){
 
     printf("Please input the base64 encoded text you want to decode.\n");
     printf("-> ");
-    char in_txt[1001], _24bit_str[25];
+    char in_txt[1001], _24bit_str[25] = "";
     scanf(" %[^\n]", in_txt);
     printf("\n========================================================================================================================\n\nResult: ");
     for(int i = 0; i < strlen(in_txt); i++){
-        strcat(_24bit_str, _6bit_bin(table_comp(in_txt[i])));
+        char _6bit_str[7];
+        strcat(_24bit_str, _6bit_bin(table_comp(in_txt[i]), &_6bit_str));
         if(i % 4 == 3 || i == strlen(in_txt) - 1){
-            char _8bit_str[9];
+            char _8bit_str[9] = "";
             char *eptr;
             for(int j = 0; j < 3; j++){
                 strncpy(_8bit_str, _24bit_str + j * 8, 8);
