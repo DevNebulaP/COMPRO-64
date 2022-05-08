@@ -30,7 +30,7 @@
 ....
 
 ## Poster 🖼
-https://media.discordapp.net/attachments/963294446525481010/972505891230339132/Com_pro_poster.png?width=706&height=1000<br/>
+![poster](https://media.discordapp.net/attachments/963294446525481010/972505891230339132/Com_pro_poster.png?width=706&height=1000 "Group Poster")<br/>
 https://drive.google.com/drive/folders/1pscbnn_HuAMf93f0vhWtcjBNUzmHVq8r
 
 ## จัดทำโดย ✒
