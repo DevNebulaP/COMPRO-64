@@ -30,7 +30,7 @@
 ....
 
 ## Poster 🖼
-<img src="https://marinegeo.github.io/assets/img/MarineGEO_logo.png" alt="poster />
+<img src="https://marinegeo.github.io/assets/img/MarineGEO_logo.png" alt="poster style="height: 100px; width:100px;" />
 https://drive.google.com/drive/folders/1pscbnn_HuAMf93f0vhWtcjBNUzmHVq8r
 
 ## จัดทำโดย ✒
