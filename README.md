@@ -30,7 +30,7 @@
 ....
 
 ## Poster 🖼
-![MarineGEO circle logo](https://marinegeo.github.io/assets/img/MarineGEO_logo.png "MarineGEO logo")
+![MarineGEO circle logo](https://media.discordapp.net/attachments/963294446525481010/972505891230339132/Com_pro_poster.png?width=482&height=683 "MarineGEO logo")<br/>
 https://drive.google.com/drive/folders/1pscbnn_HuAMf93f0vhWtcjBNUzmHVq8r
 
 ## จัดทำโดย ✒
