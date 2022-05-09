@@ -27,10 +27,11 @@
   https://compro-website.vercel.app/
 
 ## คลิปวีดีโอ 🎥
-....
+https://drive.google.com/file/d/1MymhEivjTH_GGA7wg3G3teEcciiN_gFt/view?usp=sharing
 
 ## Poster 🖼
- ....
+![poster](https://media.discordapp.net/attachments/963294446525481010/972505891230339132/Com_pro_poster.png?width=706&height=1000 "Group Poster")<br/>
+https://drive.google.com/drive/folders/1pscbnn_HuAMf93f0vhWtcjBNUzmHVq8r
 
 ## จัดทำโดย ✒
 1.  นายศุภกร เนตรสุวรรณ 64070108
